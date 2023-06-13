@@ -1,0 +1,1 @@
+<template><q-page class="fit flex flex-center"><h6>Feed column</h6></q-page></template>

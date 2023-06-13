@@ -1,1 +1,1 @@
-<template><main class="fullscreen flex flex-center"><h1>You did it!</h1></main></template>
+<template><q-page class="fit flex flex-center"><h6>List detail</h6></q-page></template>
