@@ -1,41 +1,63 @@
 <script setup>
-import NavigationTabs from '../components/NavigationTabs.vue'
+import { ref } from 'vue'
 
 const views = [
-  { to: '/', icon: 'view_list', label: 'List' },
-  { to: '/feed-row', icon: 'view_stream', label: 'Row' },
-  { to: '/feed-column', icon: 'view_column', label: 'Column' }
+  { to: '/', icon: 'view_list', label: 'List detail' },
+  { to: '/feed-row', icon: 'view_stream', label: 'Feed row' },
+  { to: '/feed-column', icon: 'view_column', label: 'Feed column' }
 ]
+const mini = ref(true)
 </script>
 
 <template>
   <q-layout view="hHh LpR fFf">
     <q-footer bordered class="lt-sm bg-white text-black">
-      <NavigationTabs
-        v-model="views"
-        no-caps
-        active-color="primary"
-        indicator-color="transparent"
-      />
+      <q-tabs no-caps active-color="primary" indicator-color="transparent">
+        <q-route-tab
+          v-for="(view, index) in views"
+          :key="index"
+          :to="view.to"
+          :icon="view.icon"
+          :label="view.label"
+          exact
+        />
+      </q-tabs>
     </q-footer>
-    <q-drawer :mini="$q.screen.lt.md" :breakpoint="600" :mini-width="75" show-if-above bordered>
-      <q-scroll-area class="fit">
-        <q-list class="gt-sm">
-          <q-item v-for="(view, index) in views" :key="index" :to="view.to" exact>
+    <q-drawer
+      :mini="$q.screen.lt.md && mini"
+      :mini-to-overlay="$q.screen.lt.md"
+      :breakpoint="599"
+      show-if-above
+    >
+      <q-scroll-area class="drawer-scroll-area">
+        <q-list class="q-py-md">
+          <q-item
+            v-for="(view, index) in views"
+            :key="index"
+            :to="view.to"
+            exact
+            @click="mini = true"
+          >
             <q-item-section avatar><q-icon :name="view.icon" /></q-item-section>
             <q-item-section>{{ view.label }}</q-item-section>
           </q-item>
         </q-list>
-        <NavigationTabs
-          v-model="views"
-          no-caps
-          active-color="primary"
-          indicator-color="transparent"
-          class="lt-md"
-          vertical
-        />
       </q-scroll-area>
+      <q-item class="absolute-top bg-accent text-white" style="min-height: 50px">
+        <q-item-section avatar class="lt-md" @click="mini = !mini">
+          <q-icon :name="mini ? 'menu' : 'menu_open'" />
+        </q-item-section>
+        <q-item-section class="text-h6">Vite App</q-item-section>
+      </q-item>
     </q-drawer>
     <q-page-container><router-view /></q-page-container>
   </q-layout>
 </template>
+
+<style scoped>
+.drawer-scroll-area {
+  height: calc(100% - 50px);
+  margin-top: 50px;
+  border-right: 1px solid #ddd;
+}
+</style>
