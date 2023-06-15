@@ -1,0 +1,1 @@
+import{a0 as l,r as o}from"./index-781f76b1.js";const u=l("CommentsStore",()=>{const t=o(null),n=o(null);function c(){fetch("https://jsonplaceholder.typicode.com/comments").then(e=>e.json()).then(e=>t.value=e).catch(e=>console.log(e))}function s(e){return t.value.find(r=>r.id===e)}return t.value||c(),{data:t,selected:n,getItem:s}});export{u};
