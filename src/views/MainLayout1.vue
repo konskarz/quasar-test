@@ -19,6 +19,9 @@ const views = [
     </q-header>
     <q-drawer v-model="drawer" show-if-above bordered>
       <q-scroll-area class="fit">
+        <q-toolbar class="lt-md bg-primary text-white">
+          <q-btn flat round dense icon="menu_open" @click="drawer = false" />
+        </q-toolbar>
         <q-list class="q-py-md">
           <q-item v-for="(view, index) in views" :key="index" :to="view.to" exact>
             <q-item-section avatar><q-icon :name="view.icon" /></q-item-section>

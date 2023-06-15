@@ -1,12 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 
+const mini = ref(true)
 const views = [
   { to: '/', icon: 'view_list', label: 'List detail' },
   { to: '/feed-row', icon: 'view_stream', label: 'Feed row' },
   { to: '/feed-column', icon: 'view_column', label: 'Feed column' }
 ]
-const mini = ref(true)
 </script>
 
 <template>
@@ -24,8 +24,8 @@ const mini = ref(true)
       </q-tabs>
     </q-footer>
     <q-drawer
-      :mini="$q.screen.lt.md && mini"
-      :mini-to-overlay="$q.screen.lt.md"
+      :mini="$q.screen.sm && mini"
+      :mini-to-overlay="$q.screen.sm"
       :breakpoint="599"
       show-if-above
     >
