@@ -1,7 +1,7 @@
 <script setup>
-import { useFetch } from '../store/fetch.js'
+import { useCommentsStore } from '../store/CommentsStore.js'
 
-const { data } = useFetch()
+const store = useCommentsStore()
 function pageStyle(offset, height) {
   return { height: height - offset + 'px' }
 }
@@ -15,11 +15,11 @@ function pageStyle(offset, height) {
           <q-toolbar-title>Feed column</q-toolbar-title>
         </q-toolbar>
       </div>
-      <div v-if="data" class="col q-pt-md">
+      <div v-if="store.data" class="col q-pt-md">
         <div class="row no-wrap full-height overflow-auto">
           <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-2 column">
             <q-intersection
-              v-for="item in data"
+              v-for="item in store.data"
               :key="item.id"
               class="full-width intersection-item"
               once

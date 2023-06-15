@@ -1,14 +1,14 @@
 <script setup>
-import { useFetch } from '../store/fetch.js'
+import { useCommentsStore } from '../store/CommentsStore.js'
 
-const { data } = useFetch()
+const store = useCommentsStore()
 </script>
 
 <template>
   <q-page style="padding-top: 66px">
-    <div v-if="data" class="row">
+    <div v-if="store.data" class="row">
       <q-intersection
-        v-for="item in data"
+        v-for="item in store.data"
         :key="item.id"
         class="col-xs-12 col-sm-6 col-lg-4 col-xl-2 intersection-item"
         once

@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
-import { useFetch } from '../store/fetch.js'
+import { useCommentsStore } from '../store/CommentsStore.js'
 import ListDetailPage from '../components/ListDetailPage.vue'
 
 const selected = ref(null)
-const { data } = useFetch()
+const store = useCommentsStore()
 </script>
 
 <template>
@@ -17,8 +17,13 @@ const { data } = useFetch()
           </q-toolbar>
         </div>
         <q-scroll-area class="col">
-          <div v-if="data" class="q-py-md">
-            <q-intersection v-for="item in data" :key="item.id" class="intersection-item" once>
+          <div v-if="store.data" class="q-py-md">
+            <q-intersection
+              v-for="item in store.data"
+              :key="item.id"
+              class="intersection-item"
+              once
+            >
               <q-item
                 clickable
                 class="q-px-lg"
