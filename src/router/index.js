@@ -10,7 +10,15 @@ const router = createRouter({
         {
           path: '',
           name: 'home',
-          component: () => import('../views/HomeView.vue')
+          component: () => import('../views/ListDetailView2.vue'),
+          children: [
+            {
+              path: ':id',
+              name: 'comment',
+              component: () => import('../views/DetailView.vue'),
+              props: true
+            }
+          ]
         },
         {
           path: '/feed-row',

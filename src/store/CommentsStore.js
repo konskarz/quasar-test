@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 export const useCommentsStore = defineStore('CommentsStore', () => {
   const data = ref(null)
+  const selected = ref(null)
   function refetch() {
     fetch('https://jsonplaceholder.typicode.com/comments')
       .then((response) => response.json())
@@ -15,6 +16,7 @@ export const useCommentsStore = defineStore('CommentsStore', () => {
   if (!data.value) refetch()
   return {
     data,
+    selected,
     getItem
   }
 })

@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const props = defineProps({
   modelValue: { type: Object, default: null }
 })
-const tab = computed(() => (props.modelValue === null ? 'list' : 'detail'))
+const tab = computed(() => (!props.modelValue ? 'list' : 'detail'))
 function pageStyle(offset, height) {
   return { height: height - offset + 'px' }
 }
@@ -19,16 +19,7 @@ function pageStyle(offset, height) {
     </q-tab-panels>
     <div class="gt-xs row no-wrap full-height">
       <div class="col col-lg-4 col-xl-3"><slot name="list" /></div>
-      <div class="col">
-        <slot name="detail">
-          <div class="flex flex-center fit">
-            <q-card flat class="text-center text-grey" style="max-width: 250px">
-              <q-avatar size="100px" icon="info_outline" />
-              <q-card-section>Select something first</q-card-section>
-            </q-card>
-          </div>
-        </slot>
-      </div>
+      <div class="col"><slot name="detail" /></div>
     </div>
   </q-page>
 </template>

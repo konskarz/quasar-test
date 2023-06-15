@@ -1,14 +1,12 @@
 <script setup>
-import { ref } from 'vue'
 import { useCommentsStore } from '../store/CommentsStore.js'
 import ListDetailPage from '../components/ListDetailPage.vue'
 
-const selected = ref(null)
 const store = useCommentsStore()
 </script>
 
 <template>
-  <ListDetailPage v-model="selected">
+  <ListDetailPage v-model="store.selected">
     <template #list>
       <div class="column no-wrap fit">
         <div class="col-auto">
@@ -24,12 +22,7 @@ const store = useCommentsStore()
               class="intersection-item"
               once
             >
-              <q-item
-                clickable
-                class="q-px-lg"
-                :active="selected && selected.id === item.id"
-                @click="selected = item"
-              >
+              <q-item :to="{ name: 'comment', params: { id: item.id } }" exact class="q-px-lg">
                 <q-item-section>
                   <q-item-label>{{ item.name }}</q-item-label>
                   <q-item-label caption>{{ item.email }}</q-item-label>
@@ -41,23 +34,13 @@ const store = useCommentsStore()
       </div>
     </template>
     <template #detail>
-      <div v-if="selected !== null" class="column no-wrap fit">
-        <div class="col-auto">
-          <q-toolbar class="bg-accent text-white">
-            <q-btn flat round icon="arrow_back" class="lt-sm" @click="selected = null" />
-            <q-toolbar-title>Detail</q-toolbar-title>
-            <q-btn flat round icon="delete" />
-            <q-btn flat round icon="save" />
-          </q-toolbar>
-        </div>
-        <q-scroll-area class="col">
-          <div class="q-py-md q-px-lg">
-            <div class="text-h6">{{ selected.name }}</div>
-            <p>{{ selected.email }}</p>
-            <p v-for="n in 15" :key="n">{{ selected.body }}</p>
-          </div>
-        </q-scroll-area>
+      <div v-if="!store.selected" class="flex flex-center fit">
+        <q-card flat class="text-center text-grey" style="max-width: 250px">
+          <q-avatar size="100px" icon="info_outline" />
+          <q-card-section>Select something first</q-card-section>
+        </q-card>
       </div>
+      <router-view :key="$route.path" />
     </template>
   </ListDetailPage>
 </template>
