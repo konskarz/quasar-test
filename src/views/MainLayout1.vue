@@ -15,9 +15,11 @@ const views = [
       <q-toolbar>
         <q-btn flat round icon="menu" class="lt-md" @click="drawer = !drawer" />
         <q-toolbar-title>Vite App</q-toolbar-title>
+        <q-btn flat round icon="add" />
+        <q-btn flat round icon="person_outline" />
       </q-toolbar>
     </q-header>
-    <q-drawer v-model="drawer" show-if-above bordered>
+    <q-drawer v-model="drawer" show-if-above>
       <q-scroll-area class="fit">
         <q-toolbar class="lt-md bg-primary text-white">
           <q-btn flat round dense icon="menu_open" @click="drawer = false" />

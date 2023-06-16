@@ -24,6 +24,8 @@ const views = [
         />
         <q-btn flat round dense icon="menu" class="xs" @click="drawer = true" />
         <q-toolbar-title>Vite App</q-toolbar-title>
+        <q-btn flat round icon="add" />
+        <q-btn flat round icon="person_outline" />
       </q-toolbar>
     </q-header>
     <q-drawer

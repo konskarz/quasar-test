@@ -5,7 +5,10 @@ const store = useCommentsStore()
 </script>
 
 <template>
-  <q-page style="padding-top: 66px">
+  <q-page class="q-pt-md">
+    <q-toolbar class="q-pl-lg">
+      <q-toolbar-title>Feed row</q-toolbar-title>
+    </q-toolbar>
     <div v-if="store.data" class="row">
       <q-intersection
         v-for="item in store.data"
@@ -24,11 +27,6 @@ const store = useCommentsStore()
         </q-item>
       </q-intersection>
     </div>
-    <q-page-sticky expand position="top">
-      <q-toolbar class="bg-accent text-white q-pl-lg">
-        <q-toolbar-title>Feed row</q-toolbar-title>
-      </q-toolbar>
-    </q-page-sticky>
   </q-page>
 </template>
 

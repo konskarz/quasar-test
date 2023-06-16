@@ -5,28 +5,20 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('../views/MainLayout4.vue'),
+      component: () => import('../views/MainLayout1.vue'),
       children: [
         {
           path: '',
           name: 'home',
-          component: () => import('../views/ListDetailView2.vue'),
+          component: () => import('../views/ListDetailView.vue'),
           children: [
             {
               path: ':id',
               name: 'comment',
-              component: () => import('../views/DetailView1.vue'),
+              component: () => import('../views/DetailView.vue'),
               props: true
             }
           ]
-        },
-        {
-          path: '/detail-drawer',
-          name: 'detail-drawer',
-          components: {
-            default: () => import('../views/ListView1.vue'),
-            detail: () => import('../views/DetailView2.vue')
-          }
         },
         {
           path: '/feed-row',

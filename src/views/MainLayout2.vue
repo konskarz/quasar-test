@@ -11,7 +11,7 @@ const views = [
 
 <template>
   <q-layout view="hHh LpR fFf">
-    <q-footer bordered class="lt-sm bg-white text-black">
+    <q-footer class="lt-sm bg-white text-black">
       <q-tabs no-caps active-color="primary" indicator-color="transparent">
         <q-route-tab
           v-for="(view, index) in views"
@@ -30,7 +30,7 @@ const views = [
       show-if-above
     >
       <q-scroll-area class="drawer-scroll-area">
-        <q-list class="q-py-md">
+        <q-list>
           <q-item
             v-for="(view, index) in views"
             :key="index"
@@ -43,12 +43,14 @@ const views = [
           </q-item>
         </q-list>
       </q-scroll-area>
-      <q-item class="absolute-top bg-accent text-white" style="min-height: 50px">
-        <q-item-section avatar class="lt-md" @click="mini = !mini">
-          <q-icon :name="mini ? 'menu' : 'menu_open'" />
-        </q-item-section>
-        <q-item-section class="text-h6">Vite App</q-item-section>
-      </q-item>
+      <div class="absolute-top q-pt-md">
+        <q-item style="min-height: 50px">
+          <q-item-section avatar class="lt-md" @click="mini = !mini">
+            <q-icon :name="mini ? 'menu' : 'menu_open'" />
+          </q-item-section>
+          <q-item-section class="text-h6">Vite App</q-item-section>
+        </q-item>
+      </div>
     </q-drawer>
     <q-page-container><router-view /></q-page-container>
   </q-layout>
@@ -56,8 +58,7 @@ const views = [
 
 <style scoped>
 .drawer-scroll-area {
-  height: calc(100% - 50px);
-  margin-top: 50px;
-  border-right: 1px solid #ddd;
+  height: calc(100% - 66px);
+  margin-top: 66px;
 }
 </style>

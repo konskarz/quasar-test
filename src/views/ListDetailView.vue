@@ -8,30 +8,23 @@ const store = useCommentsStore()
 <template>
   <ListDetailPage v-model="store.selected">
     <template #list>
-      <div class="column no-wrap fit">
-        <div class="col-auto">
-          <q-toolbar class="bg-accent text-white q-pl-lg">
+      <q-scroll-area class="fit">
+        <div class="q-pt-md">
+          <q-toolbar class="q-pl-lg">
             <q-toolbar-title>List</q-toolbar-title>
           </q-toolbar>
         </div>
-        <q-scroll-area class="col">
-          <div v-if="store.data" class="q-py-md">
-            <q-intersection
-              v-for="item in store.data"
-              :key="item.id"
-              class="intersection-item"
-              once
-            >
-              <q-item :to="{ name: 'comment', params: { id: item.id } }" exact class="q-px-lg">
-                <q-item-section>
-                  <q-item-label>{{ item.name }}</q-item-label>
-                  <q-item-label caption>{{ item.email }}</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-intersection>
-          </div>
-        </q-scroll-area>
-      </div>
+        <div v-if="store.data">
+          <q-intersection v-for="item in store.data" :key="item.id" class="intersection-item" once>
+            <q-item :to="{ name: 'comment', params: { id: item.id } }" exact class="q-px-lg">
+              <q-item-section>
+                <q-item-label>{{ item.name }}</q-item-label>
+                <q-item-label caption>{{ item.email }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-intersection>
+        </div>
+      </q-scroll-area>
     </template>
     <template #detail>
       <div v-if="!store.selected" class="flex flex-center fit">

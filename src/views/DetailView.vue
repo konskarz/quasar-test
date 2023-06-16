@@ -12,21 +12,19 @@ onBeforeRouteLeave(() => (store.selected = null))
 </script>
 
 <template>
-  <div v-if="store.selected !== null" class="column no-wrap fit">
-    <div class="col-auto">
-      <q-toolbar class="bg-accent text-white">
+  <q-scroll-area v-if="store.selected" class="fit">
+    <div class="q-pt-md">
+      <q-toolbar>
         <q-btn flat round icon="arrow_back" class="lt-sm" @click="$router.back()" />
         <q-toolbar-title>Detail</q-toolbar-title>
         <q-btn flat round icon="delete" />
         <q-btn flat round icon="save" />
       </q-toolbar>
     </div>
-    <q-scroll-area class="col">
-      <div class="q-py-md q-px-lg">
-        <div class="text-h6">{{ store.selected.name }}</div>
-        <p>{{ store.selected.email }}</p>
-        <p v-for="n in 15" :key="n">{{ store.selected.body }}</p>
-      </div>
-    </q-scroll-area>
-  </div>
+    <div class="q-pt-xs q-px-lg">
+      <div class="text-subtitle1">{{ store.selected.name }}</div>
+      <p>{{ store.selected.email }}</p>
+      <p v-for="n in 15" :key="n">{{ store.selected.body }}</p>
+    </div>
+  </q-scroll-area>
 </template>

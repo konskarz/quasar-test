@@ -10,12 +10,12 @@ function pageStyle(offset, height) {
 <template>
   <q-page :style-fn="pageStyle">
     <div class="column no-wrap fit">
-      <div class="col-auto">
-        <q-toolbar class="bg-accent text-white q-pl-lg">
+      <div class="col-auto q-pt-md">
+        <q-toolbar class="q-pl-lg">
           <q-toolbar-title>Feed column</q-toolbar-title>
         </q-toolbar>
       </div>
-      <div v-if="store.data" class="col q-pt-md">
+      <div v-if="store.data" class="col">
         <div class="row no-wrap full-height overflow-auto">
           <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-2 column">
             <q-intersection
