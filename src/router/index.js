@@ -15,10 +15,18 @@ const router = createRouter({
             {
               path: ':id',
               name: 'comment',
-              component: () => import('../views/DetailView.vue'),
+              component: () => import('../views/DetailView1.vue'),
               props: true
             }
           ]
+        },
+        {
+          path: '/detail-drawer',
+          name: 'detail-drawer',
+          components: {
+            default: () => import('../views/ListView.vue'),
+            detail: () => import('../views/DetailView2.vue')
+          }
         },
         {
           path: '/feed-row',

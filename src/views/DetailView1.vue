@@ -26,8 +26,6 @@ onBeforeRouteLeave(() => (store.selected = null))
       <q-toolbar>
         <q-btn flat round icon="arrow_back" class="lt-sm" @click="$router.back()" />
         <q-toolbar-title>Detail</q-toolbar-title>
-        <q-btn flat round icon="delete" />
-        <q-btn flat round icon="save" />
       </q-toolbar>
     </div>
     <div class="q-pt-xs q-px-lg">

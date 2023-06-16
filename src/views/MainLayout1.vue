@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const drawer = ref(false)
 const views = [
   { to: '/', icon: 'view_list', label: 'List detail' },
+  { to: '/detail-drawer', icon: 'view_sidebar', label: 'Detail drawer' },
   { to: '/feed-row', icon: 'view_stream', label: 'Feed row' },
   { to: '/feed-column', icon: 'view_column', label: 'Feed column' }
 ]
@@ -15,8 +16,6 @@ const views = [
       <q-toolbar>
         <q-btn flat round icon="menu" class="lt-md" @click="drawer = !drawer" />
         <q-toolbar-title>Vite App</q-toolbar-title>
-        <q-btn flat round icon="add" />
-        <q-btn flat round icon="person_outline" />
       </q-toolbar>
     </q-header>
     <q-drawer v-model="drawer" show-if-above>
@@ -32,6 +31,7 @@ const views = [
         </q-list>
       </q-scroll-area>
     </q-drawer>
+    <router-view name="detail" />
     <q-page-container><router-view /></q-page-container>
   </q-layout>
 </template>
