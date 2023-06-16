@@ -1,4 +1,5 @@
 <script setup>
+import { watch } from 'vue'
 import { useCommentsStore } from '../store/CommentsStore.js'
 import { onBeforeRouteLeave } from 'vue-router'
 
@@ -7,7 +8,15 @@ const props = defineProps({
 })
 const itemId = parseInt(props.id)
 const store = useCommentsStore()
-if (itemId && store.data) store.selected = store.getItem(itemId)
+if (itemId) {
+  const select = () => (store.selected = store.getItem(itemId))
+  if (store.data) select()
+  else
+    watch(
+      () => store.data,
+      () => select()
+    )
+}
 onBeforeRouteLeave(() => (store.selected = null))
 </script>
 
