@@ -17,8 +17,8 @@ watch(selected, (value) => {
 })
 watch(drawer, (value) => {
   if (!value) {
-    if (selected.value) drawer.value = true
-    else router.back()
+    if (selected.value) selected.value = null
+    router.back()
   }
 })
 if (itemId) {
