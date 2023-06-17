@@ -11,12 +11,7 @@ const store = useCommentsStore()
     </q-toolbar>
     <div v-if="store.data">
       <q-intersection v-for="item in store.data" :key="item.id" class="intersection-item" once>
-        <q-item
-          clickable
-          class="q-px-lg"
-          :active="store.selected && store.selected.id === item.id"
-          @click="store.selected = item"
-        >
+        <q-item :to="{ name: 'detail-drawer-item', params: { id: item.id } }" exact class="q-px-lg">
           <q-item-section>
             <q-item-label>{{ item.name }}</q-item-label>
             <q-item-label caption>{{ item.email }}</q-item-label>

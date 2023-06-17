@@ -3,8 +3,8 @@ import { ref } from 'vue'
 
 const mini = ref(true)
 const views = [
-  { to: '/', icon: 'view_list', label: 'List detail' },
-  { to: '/detail-drawer', icon: 'view_sidebar', label: 'Detail drawer' },
+  { to: '/', icon: 'view_sidebar', label: 'Detail drawer' },
+  { to: '/list-detail', icon: 'view_carousel', label: 'Detail panel' },
   { to: '/feed-row', icon: 'view_stream', label: 'Feed row' },
   { to: '/feed-column', icon: 'view_column', label: 'Feed column' }
 ]
@@ -53,7 +53,7 @@ const views = [
         </q-item>
       </div>
     </q-drawer>
-    <router-view name="detail" />
+    <router-view :key="$route.path" name="detail" />
     <q-page-container><router-view /></q-page-container>
   </q-layout>
 </template>

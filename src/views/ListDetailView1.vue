@@ -16,7 +16,11 @@ const store = useCommentsStore()
         </div>
         <div v-if="store.data">
           <q-intersection v-for="item in store.data" :key="item.id" class="intersection-item" once>
-            <q-item :to="{ name: 'comment', params: { id: item.id } }" exact class="q-px-lg">
+            <q-item
+              :to="{ name: 'list-detail-item', params: { id: item.id } }"
+              exact
+              class="q-px-lg"
+            >
               <q-item-section>
                 <q-item-label>{{ item.name }}</q-item-label>
                 <q-item-label caption>{{ item.email }}</q-item-label>
