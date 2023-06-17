@@ -29,7 +29,7 @@ function drawerWidth(screen) {
     <q-scroll-area v-if="store.selected" class="fit">
       <div class="q-pt-md">
         <q-toolbar>
-          <q-btn flat round icon="arrow_back" class="lt-sm" @click="drawer = false" />
+          <q-btn flat round icon="arrow_back" class="lt-sm" @click="store.selected = null" />
           <q-toolbar-title>Detail</q-toolbar-title>
         </q-toolbar>
       </div>
