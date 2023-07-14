@@ -49,6 +49,11 @@ const router = createRouter({
           component: () => import('../views/FeedColumnView.vue')
         }
       ]
+    },
+    {
+      path: '/narrow-layout',
+      name: 'narrow-layout',
+      component: () => import('../views/NarrowLayout.vue')
     }
   ]
 })

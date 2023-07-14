@@ -1,13 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import TheNavigation from '../components/TheNavigation.vue'
 
 const drawer = ref(false)
-const views = [
-  { to: '/', icon: 'view_sidebar', label: 'Detail drawer' },
-  { to: '/list-detail', icon: 'view_carousel', label: 'Detail panel' },
-  { to: '/feed-row', icon: 'view_stream', label: 'Feed row' },
-  { to: '/feed-column', icon: 'view_column', label: 'Feed column' }
-]
 </script>
 
 <template>
@@ -19,17 +14,7 @@ const views = [
       </q-toolbar>
     </q-header>
     <q-drawer v-model="drawer" show-if-above>
-      <q-scroll-area class="fit">
-        <q-toolbar class="lt-md bg-primary text-white">
-          <q-btn flat round dense icon="menu_open" @click="drawer = false" />
-        </q-toolbar>
-        <q-list class="q-py-md">
-          <q-item v-for="(view, index) in views" :key="index" :to="view.to" exact>
-            <q-item-section avatar><q-icon :name="view.icon" /></q-item-section>
-            <q-item-section>{{ view.label }}</q-item-section>
-          </q-item>
-        </q-list>
-      </q-scroll-area>
+      <TheNavigation @close="drawer = false" />
     </q-drawer>
     <router-view :key="$route.path" name="detail" />
     <q-page-container><router-view /></q-page-container>
